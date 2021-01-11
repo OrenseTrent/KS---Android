@@ -23,10 +23,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
 
     private LandingActivity landingActivity;
 
-    @BindView(R.id.emailET)             EditText emailET;
-    @BindView(R.id.passET)              EditText passET;
-    @BindView(R.id.loginBTN)            TextView loginBTN;
-    @BindView(R.id.signUpBTN)           TextView signUpBTN;
+//    @BindView(R.id.emailET)             EditText emailET;
+//    @BindView(R.id.passET)              EditText passET;
+//    @BindView(R.id.loginBTN)            TextView loginBTN;
+//    @BindView(R.id.signUpBTN)           TextView signUpBTN;
 
     public static LoginFragment newInstance() {
         LoginFragment fragment = new LoginFragment();
@@ -41,8 +41,8 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     @Override
     public void onViewReady() {
         landingActivity = (LandingActivity) getContext();
-        loginBTN.setOnClickListener(this);
-        signUpBTN.setOnClickListener(this);
+//        loginBTN.setOnClickListener(this);
+//        signUpBTN.setOnClickListener(this);
     }
 
     @Override
@@ -65,12 +65,12 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.loginBTN:
-                landingActivity.startMainActivity("home");
-              break;
-            case R.id.signUpBTN:
-                landingActivity.startRegisterActivity("signup");
-                break;
+//            case R.id.loginBTN:
+//                landingActivity.startMainActivity("home");
+//              break;
+//            case R.id.signUpBTN:
+//                landingActivity.startRegisterActivity("signup");
+//                break;
 
 
         }

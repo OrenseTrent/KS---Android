@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 30
+    buildToolsVersion '29.0.3'
     defaultConfig {
         applicationId "com.cloversoft.ks"
         minSdkVersion 17
-        targetSdkVersion 28
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -23,15 +23,13 @@ android {
     productFlavors {
         demo {
             dimension 'tier'
-            resValue "string", "app_name", "Test - Sample"
-            resValue "string", "facebook_id", "1624394427854964"
-            resValue "string", "facebook_authorities", "com.facebook.app.FacebookContentProvider1624394427854964"
+            resValue "string", "app_name", "Test - 凯盛国际"
+
         }
         full {
             dimension 'tier'
-            resValue "string", "app_name", "Sample"
-            resValue "string", "facebook_id", "1505711726389902"
-            resValue "string", "facebook_authorities", "com.facebook.app.FacebookContentProvider1505711726389902"
+            resValue "string", "app_name", "凯盛国际"
+
         }
     }
 
@@ -52,19 +50,19 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.jakewharton:butterknife:10.1.0'
+    implementation 'com.jakewharton:butterknife:10.2.0'
     implementation 'frankiesardo:icepick:3.2.0'
     implementation 'org.greenrobot:eventbus:3.0.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.0'
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.3'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.asksira.android:bsimagepicker:1.1.0'
-    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.airbnb.android:lottie:2.7.0'
     implementation 'io.github.inflationx:calligraphy3:3.1.1'
     implementation 'io.github.inflationx:viewpump:2.0.3'
@@ -73,6 +71,6 @@ dependencies {
     annotationProcessor 'frankiesardo:icepick-processor:3.2.0'
     annotationProcessor 'com.google.auto.service:auto-service:1.0-rc2'
 
-    compileOnly 'frankiesardo:icepick-processor:3.2.0'
+    annotationProcessor 'frankiesardo:icepick-processor:3.2.0'
     testImplementation 'junit:junit:4.12'
 }
