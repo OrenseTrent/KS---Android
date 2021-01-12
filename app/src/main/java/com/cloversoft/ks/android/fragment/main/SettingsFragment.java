@@ -44,9 +44,7 @@ public class SettingsFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        mainActivity.setSelectedItem("settings");
         mainActivity.setTitle("Settings");
-        mainActivity.settingActive();
     }
 
     @Override

@@ -85,7 +85,7 @@
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_profile"
-                    android:tint="@color/cardview_dark_background" />
+                    />
 
                 <TextView
                     android:id="@+id/scanTXT"

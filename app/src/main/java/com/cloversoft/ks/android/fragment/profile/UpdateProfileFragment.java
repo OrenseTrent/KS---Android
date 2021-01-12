@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 
 import com.cloversoft.ks.R;
+import com.cloversoft.ks.android.activity.MainActivity;
 import com.cloversoft.ks.android.activity.ProfileActivity;
 import com.cloversoft.ks.server.request.Auth;
 import com.cloversoft.ks.vendor.android.base.BaseFragment;
@@ -50,7 +51,7 @@ public class UpdateProfileFragment extends BaseFragment implements View.OnFocusC
         return fragment;
     }
 
-    private ProfileActivity profileActivity;
+    private MainActivity mainActivity;
 
 
     @Override
@@ -60,12 +61,12 @@ public class UpdateProfileFragment extends BaseFragment implements View.OnFocusC
 
     @Override
     public void onViewReady() {
-        profileActivity = (ProfileActivity) getContext();
+        mainActivity = (MainActivity) getContext();
         fnameET.setOnFocusChangeListener(this);
         lnameET.setOnFocusChangeListener(this);
         numberET.setOnFocusChangeListener(this);
         emailET.setOnFocusChangeListener(this);
-        profileActivity.setTitle("Profile");
+        mainActivity.setTitle("Profile");
     }
 
 
@@ -78,6 +79,7 @@ public class UpdateProfileFragment extends BaseFragment implements View.OnFocusC
     @Override
     public void onResume() {
         super.onResume();
+        mainActivity.profileActive();
 
     }
 
@@ -90,7 +92,7 @@ public class UpdateProfileFragment extends BaseFragment implements View.OnFocusC
 
     @OnClick(R.id.doneBTN)
     void doneBTNClicked(){
-        profileActivity.onBackPressed();
+        mainActivity.onBackPressed();
     }
 
     @OnClick(R.id.profileIMG)

@@ -18,6 +18,7 @@ import com.cloversoft.ks.android.adapter.DrawerAdapter;
 import com.cloversoft.ks.android.fragment.DefaultFragment;
 import com.cloversoft.ks.android.fragment.main.HomeFragment;
 import com.cloversoft.ks.android.fragment.main.SettingsFragment;
+import com.cloversoft.ks.android.fragment.profile.UpdateProfileFragment;
 import com.cloversoft.ks.android.route.RouteActivity;
 import com.cloversoft.ks.data.model.api.NavDrawerModel;
 import com.cloversoft.ks.vendor.android.java.Keyboard;
@@ -29,28 +30,26 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 
-public class MainActivity extends RouteActivity implements DrawerAdapter.ClickListener {
+public class MainActivity extends RouteActivity implements View.OnClickListener {
     public static final String TAG = MainActivity.class.getName().toString();
 
 
-    private DrawerAdapter drawerAdapter;
+
     ColorStateList defaultColor;
 
-    @BindView(R.id.homeCon)                     View homeCON;
-    @BindView(R.id.scanCon)                     View scanCON;
-    @BindView(R.id.settingsCON)                 View settingsCON;
+    @BindView(R.id.homeCON)                     View homeCON;
+    @BindView(R.id.discountCON)                 View discountCON;
+    @BindView(R.id.customerCON)                 View customerCON;
+    @BindView(R.id.profileCON)                  View profileCON;
     @BindView(R.id.homeIMG)                     ImageView homeIMG;
-    @BindView(R.id.scanIMG)                     ImageView scanIMG;
-    @BindView(R.id.settingsIMG)                 ImageView settingsIMG;
+    @BindView(R.id.discountIMG)                 ImageView discountIMG;
+    @BindView(R.id.customerIMG)                 ImageView customerIMG;
+    @BindView(R.id.profileIMG)                  ImageView profileIMG;
     @BindView(R.id.homeTXT)                     TextView homeTXT;
-    @BindView(R.id.scanTXT)                     TextView scanTXT;
-    @BindView(R.id.settingsTXT)                 TextView settingsTXT;
-    @BindView(R.id.drawer_layout)               DrawerLayout drawer_layout;
-    @BindView(R.id.profileNavIMG)               ImageView profileNavIMG;
-    @BindView(R.id.profileBTN)                  ImageView profileBTN;
-    @BindView(R.id.nameTXT)                     TextView nameTXT;
-    @BindView(R.id.descTXT)                     TextView descTXT;
-    @BindView(R.id.drawerLV)                    ListView drawerLV;
+    @BindView(R.id.discountTXT)                 TextView discountTXT;
+    @BindView(R.id.customerTXT)                 TextView customerTXT;
+    @BindView(R.id.profileTXT)                  TextView profileTXT;
+
 
     @Override
     public int onLayoutSet() {
@@ -59,8 +58,11 @@ public class MainActivity extends RouteActivity implements DrawerAdapter.ClickLi
 
     @Override
     public void onViewReady() {
-        SetDrawer();
         defaultColor = homeTXT.getTextColors();
+        homeCON.setOnClickListener(this);
+        discountCON.setOnClickListener(this);
+        customerCON.setOnClickListener(this);
+        profileCON.setOnClickListener(this);
     }
 
     @Override
@@ -83,141 +85,100 @@ public class MainActivity extends RouteActivity implements DrawerAdapter.ClickLi
     }
     public void openHomeFragment(){ switchFragment(HomeFragment.newInstance()); }
     public void openSettingsFragment(){ switchFragment(SettingsFragment.newInstance()); }
+    public void openProfileFragment(){switchFragment(UpdateProfileFragment.newInstance());}
 
-
-    public void setSelectedItem(String item) {
-        drawerAdapter.setSelectedItem(item);
-    }
-
-    private void SetDrawer() {
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer_layout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer_layout.setDrawerListener(toggle);
-        toggle.syncState();
-
-        drawerAdapter = new DrawerAdapter(getContext());
-        drawerAdapter.setClickListener(this);
-        drawerAdapter.setNewData(NavDrawer());
-
-        drawerLV.setAdapter(drawerAdapter);
-    }
-
-    private List<NavDrawerModel> NavDrawer() {
-        List<NavDrawerModel> navDrawerListModels = new ArrayList<>();
-
-        NavDrawerModel navDrawerModel = new NavDrawerModel();
-        navDrawerModel.id = 1;
-        navDrawerModel.item = "Home";
-        navDrawerListModels.add(navDrawerModel);
-
-        navDrawerModel = new NavDrawerModel();
-        navDrawerModel.id = 2;
-        navDrawerModel.item = "Settings";
-        navDrawerListModels.add(navDrawerModel);
-
-        return navDrawerListModels;
-    }
-
-    public void drawer() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START);
-        } else {
-            drawer_layout.openDrawer(GravityCompat.START);
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @OnClick(R.id.menuBTN)
-    void menuBTNOnClicked(){
-        drawer();
-    }
-
-
-    @OnClick(R.id.profileNavIMG)
-    void profileNavIMGOnClicked(){
-        startProfileActivity("update_profile");
-    }
-
-    @OnClick(R.id.profileBTN)
-    void profileBTNClicked(){
-        startProfileActivity("update_profile");
-    }
-
-    @OnClick(R.id.homeCon)
-    public void homeActives(){
-        homeActive();
-        openHomeFragment();
-    }
-
-    @OnClick(R.id.scanCon)
-    public void scanActives(){
-        scanActive();
-        startProfileActivity("update_profile");
-    }
-
-    @OnClick(R.id.settingsCON)
-    public void settingActives(){
-        settingActive();
-        openSettingsFragment();
-    }
 
 
     @Override
-    public void onItemClick(NavDrawerModel navDrawerModel) {
-        drawer_layout.closeDrawer(GravityCompat.START);
-        switch (navDrawerModel.id) {
-            case 1:
-                openHomeFragment();
-                Keyboard.hideKeyboard(this);
-                break;
-            case 2:
-                openSettingsFragment();
-                Keyboard.hideKeyboard(this);
-                break;
-        }
+    public void onBackPressed() { super.onBackPressed();
     }
+
+
+//    @OnClick(R.id.profileBTN)
+//    void profileBTNClicked(){
+//        startProfileActivity("update_profile");
+//    }
+
+
 
     public void homeActive(){
         homeCON.setSelected(true);
-        homeIMG.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP);
-        homeTXT.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
-        scanCON.setSelected(false);
-        scanIMG.clearColorFilter();
-        scanTXT.setTextColor(defaultColor);
-        settingsCON.setSelected(false);
-        settingsIMG.clearColorFilter();
-        settingsTXT.setTextColor(defaultColor);
+        homeIMG.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+        homeTXT.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        discountCON.setSelected(false);
+        discountIMG.clearColorFilter();
+        discountTXT.setTextColor(defaultColor);
+        customerCON.setSelected(false);
+        customerIMG.clearColorFilter();
+        customerTXT.setTextColor(defaultColor);
+        profileCON.setSelected(false);
+        profileIMG.clearColorFilter();
+        profileTXT.setTextColor(defaultColor);
     }
 
-    public void scanActive(){
+    public void discountActive(){
         homeCON.setSelected(false);
         homeIMG.clearColorFilter();
         homeTXT.setTextColor(defaultColor);
-        scanCON.setSelected(true);
-        scanIMG.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP);
-        scanTXT.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
-        settingsCON.setSelected(false);
-        settingsIMG.clearColorFilter();
-        settingsTXT.setTextColor(defaultColor);
+        discountCON.setSelected(true);
+        discountIMG.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+        discountTXT.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        customerCON.setSelected(false);
+        customerIMG.clearColorFilter();
+        customerTXT.setTextColor(defaultColor);
+        profileCON.setSelected(false);
+        profileIMG.clearColorFilter();
+        profileTXT.setTextColor(defaultColor);
     }
 
-    public void settingActive(){
+    public void customerActive(){
         homeCON.setSelected(false);
         homeIMG.clearColorFilter();
         homeTXT.setTextColor(defaultColor);
-        scanCON.setSelected(false);
-        scanIMG.clearColorFilter();
-        scanTXT.setTextColor(defaultColor);
-        settingsCON.setSelected(true);
-        settingsIMG.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP);
-        settingsTXT.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
+        discountCON.setSelected(false);
+        discountIMG.clearColorFilter();
+        discountTXT.setTextColor(defaultColor);
+        customerCON.setSelected(true);
+        customerIMG.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+        customerTXT.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+        profileCON.setSelected(false);
+        profileIMG.clearColorFilter();
+        profileTXT.setTextColor(defaultColor);
+    }
+
+    public void profileActive(){
+        homeCON.setSelected(false);
+        homeIMG.clearColorFilter();
+        homeTXT.setTextColor(defaultColor);
+        discountCON.setSelected(false);
+        discountIMG.clearColorFilter();
+        discountTXT.setTextColor(defaultColor);
+        customerCON.setSelected(false);
+        customerIMG.clearColorFilter();
+        customerTXT.setTextColor(defaultColor);
+        profileCON.setSelected(true);
+        profileIMG.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+        profileTXT.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.homeCON:
+                homeActive();
+                openHomeFragment();
+                break;
+            case R.id.discountCON:
+                discountActive();
+                break;
+            case R.id.customerCON:
+                customerActive();
+                break;
+            case R.id.profileCON:
+                profileActive();
+                openProfileFragment();
+                break;
+        }
+
     }
 }
