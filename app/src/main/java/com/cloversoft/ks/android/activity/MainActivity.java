@@ -16,6 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.cloversoft.ks.R;
 import com.cloversoft.ks.android.adapter.DrawerAdapter;
 import com.cloversoft.ks.android.fragment.DefaultFragment;
+import com.cloversoft.ks.android.fragment.customer.CustomerServiceFragment;
 import com.cloversoft.ks.android.fragment.main.HomeFragment;
 import com.cloversoft.ks.android.fragment.main.SettingsFragment;
 import com.cloversoft.ks.android.fragment.profile.UpdateProfileFragment;
@@ -86,6 +87,7 @@ public class MainActivity extends RouteActivity implements View.OnClickListener 
     public void openHomeFragment(){ switchFragment(HomeFragment.newInstance()); }
     public void openSettingsFragment(){ switchFragment(SettingsFragment.newInstance()); }
     public void openProfileFragment(){switchFragment(UpdateProfileFragment.newInstance());}
+    public void openCustomerServiceFragment(){switchFragment(CustomerServiceFragment.newInstance());}
 
 
 
@@ -173,6 +175,7 @@ public class MainActivity extends RouteActivity implements View.OnClickListener 
                 break;
             case R.id.customerCON:
                 customerActive();
+                openCustomerServiceFragment();
                 break;
             case R.id.profileCON:
                 profileActive();

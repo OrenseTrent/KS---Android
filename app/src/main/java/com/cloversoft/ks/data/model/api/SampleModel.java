@@ -6,8 +6,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class SampleModel extends AndroidModel {
 
-    @SerializedName("name")
-    public String name;
+    @SerializedName("image")
+    public int image;
 
     @Override
     public String toString() {

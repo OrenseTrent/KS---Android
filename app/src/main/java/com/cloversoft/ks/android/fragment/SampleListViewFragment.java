@@ -51,7 +51,7 @@ public class SampleListViewFragment extends BaseFragment {
         for(int i = 0; i < 20; i++){
             defaultItem = new SampleModel();
             defaultItem.id = i;
-            defaultItem.name = "name " + i;
+//            defaultItem.name = "name " + i;
             androidModels.add(defaultItem);
         }
         return androidModels;

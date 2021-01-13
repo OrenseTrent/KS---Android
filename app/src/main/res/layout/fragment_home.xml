@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:fillViewport="true">-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,8 +30,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_alignParentTop="true"
+                    android:background="@drawable/circular_layout"
+                    android:layout_marginBottom="@dimen/dimen_20"
                     />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User 1"
+                    android:layout_above="@id/view"
+                    android:layout_marginStart="@dimen/dimen_20"
+                    android:layout_marginTop="@dimen/default_dimen"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="170"
+                    android:layout_above="@id/view"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dimen_20"
+                    android:layout_marginTop="@dimen/default_dimen"
+                    />
+
                 <View
+                    android:id="@+id/view"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/gray"
@@ -47,7 +70,7 @@
                     android:elevation="3dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:layout_below="@+id/sliderLayout"
+                    android:layout_below="@+id/view"
                     >
                     <LinearLayout
                         android:id="@+id/depositCON"
@@ -169,7 +192,6 @@
                     android:id="@+id/sideMenuCON"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:elevation="3dp"
                     android:gravity="center_vertical"
                     android:orientation="vertical"
                     >
@@ -180,23 +202,16 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:padding="@dimen/default_dimen">
+
+                        >
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-
+                            android:src="@drawable/casinol"
                             />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="@dimen/half_dimen"
-                            android:text="充值"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -206,22 +221,13 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:padding="@dimen/default_dimen">
+                        >
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/transfer" />
-
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="转账"
-                            android:layout_marginStart="@dimen/half_dimen"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
+                            android:src="@drawable/sports" />
 
                     </LinearLayout>
 
@@ -232,22 +238,14 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:padding="@dimen/default_dimen">
+                        >
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/withdraw" />
-
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="提款"
-                            android:layout_marginStart="@dimen/half_dimen"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
+                            android:src="@drawable/esports" />
+
 
                     </LinearLayout>
 
@@ -258,24 +256,52 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:padding="@dimen/default_dimen">
+                        >
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/msg"/>
-
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="信息"
-                            android:layout_marginStart="@dimen/half_dimen"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
+                            android:src="@drawable/poker"/>
+
 
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/slots"/>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/lottery"/>
+
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
@@ -284,7 +310,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_marginStart="@dimen/default_dimen"
                     />
 
 
@@ -292,6 +317,6 @@
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+<!--    </androidx.core.widget.NestedScrollView>-->
 
 </LinearLayout>

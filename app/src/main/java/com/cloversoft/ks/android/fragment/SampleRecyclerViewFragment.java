@@ -40,21 +40,21 @@ public class SampleRecyclerViewFragment extends BaseFragment {
 
     private void setUpListView(){
         defaultRecyclerViewAdapter = new DefaultRecyclerViewAdapter(getContext());
-        defaultRecyclerViewAdapter.setNewData(getDefaultData());
+//        defaultRecyclerViewAdapter.setNewData(getDefaultData());
         linearLayoutManager = new LinearLayoutManager(getContext());
         defaultRV.setLayoutManager(linearLayoutManager);
         defaultRV.setAdapter(defaultRecyclerViewAdapter);
     }
 
-    private List<SampleModel> getDefaultData(){
-        List<SampleModel> androidModels = new ArrayList<>();
-        SampleModel defaultItem;
-        for(int i = 0; i < 20; i++){
-            defaultItem = new SampleModel();
-            defaultItem.id = i;
-            defaultItem.name = "name " + i;
-            androidModels.add(defaultItem);
-        }
-        return androidModels;
-    }
+//    private List<SampleModel> getDefaultData(){
+//        List<SampleModel> androidModels = new ArrayList<>();
+//        SampleModel defaultItem;
+//        for(int i = 0; i < 20; i++){
+//            defaultItem = new SampleModel();
+//            defaultItem.id = i;
+//            defaultItem.name = "name " + i;
+//            androidModels.add(defaultItem);
+//        }
+//        return androidModels;
+//    }
 }
